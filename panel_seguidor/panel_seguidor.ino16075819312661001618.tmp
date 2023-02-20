@@ -1,0 +1,76 @@
+#include <Servo.h>
+
+Servo servo1;
+Servo servo2;
+int s1= A0;
+int s2= A1;
+int s3= A2;
+int s4= A3;
+//int servo1= 6;
+//int servo2= 7;
+int sensor1= 0;
+int sensor2= 0;
+int sensor3= 0;
+int sensor4= 0;
+int pos=0;
+int pos2=0;
+
+
+void setup() {
+pinMode (s1, INPUT);
+pinMode (s2, INPUT);
+pinMode (s3, INPUT);
+pinMode (s4, INPUT);
+
+Serial.begin (9600);
+
+// pinMode (servo1, OUTPUT);
+//pinMode (servo2, OUTPUT); 
+servo1.attach(6); 
+servo2.attach(9);
+}
+
+void loop() {
+servo1.write(pos);
+servo2.write(pos2);
+// sensor1= analogRead(s1);
+//sensor2= analogRead(s2);
+
+sensor1=101;
+sensor2=250;
+if (sensor1 > 100) {
+
+if (sensor1<sensor2){
+while (sensor1 < sensor2){
+  pos++;
+  if (pos>180){
+    break;
+  }
+  servo1.write(pos);
+  Serial.print("pos1 ");
+  Serial.println(pos);
+ // sensor3= analogRead(s3);
+  //sensor4= analogRead(s4);
+  sensor3=10;
+  sensor4=20;
+      while (sensor3 < sensor4){
+        pos2++;
+        if (pos2>90){
+          break;
+        }
+        servo2.write(pos2);
+        Serial.println(pos2);
+        
+      }
+}
+ 
+}
+ sensor1= analogRead(s1);
+ sensor2= analogRead(s2);
+ if (sensor1 < 200);
+  pos= 0;
+  servo1.write(pos);
+  Serial.println(pos); 
+}
+ 
+}
